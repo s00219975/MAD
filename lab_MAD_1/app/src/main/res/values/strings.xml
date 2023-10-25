@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">lab_MAD_1</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="hello_mobile_developer">Hello Mobile Developer!</string>
+</resources>

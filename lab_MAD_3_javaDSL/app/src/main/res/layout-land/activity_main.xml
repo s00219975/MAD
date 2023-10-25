@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFB6C1"
+    tools:context=".MainPage2">
+
+
+    <Button
+        android:id="@+id/buttonHip"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
+        android:background="#FF001E"
+        android:text="Hip Hop"
+        android:textAlignment="center"
+        android:textColor="#BFBFBF"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:cornerRadius="0sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.962"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="136dp"
+        android:layout_height="121dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:text="Today you will choose the dance style you would like to try"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Denys"
+        android:textSize="36sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonSamba"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginBottom="25dp"
+        android:background="#FF001E"
+        android:text="Samba"
+        android:textAlignment="center"
+        android:textColor="#BFBFBF"
+        android:textSize="26sp"
+        app:cornerRadius="0sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.962"
+        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRock" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="193dp"
+        android:layout_height="181dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/screenshot_2023_10_10_134737" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="348dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
+        android:background="#D9645A"
+        android:text="Choose your dance style"
+        android:textAlignment="center"
+        android:textColor="#C6C5C5"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/buttonRock"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
+        android:background="#FF001E"
+        android:text="Rock 'n' Roll"
+        android:textAlignment="center"
+        android:textColor="#BFBFBF"
+        android:textSize="26sp"
+        app:cornerRadius="0sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSamba"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.962"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonHip" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

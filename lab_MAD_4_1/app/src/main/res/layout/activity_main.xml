@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <!-- First band color spinner -->
+    <!-- Second band color spinner -->
+    <!-- Third band color spinner -->
+    <!-- Calculate button -->
+
+
+    <Spinner
+        android:id="@+id/spinnerBand"
+        android:layout_width="170dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="116dp"
+        android:entries="@array/colors_array"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerBand2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAppName" />
+
+    <Spinner
+        android:id="@+id/spinnerBand2"
+        android:layout_width="170dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="116dp"
+        android:entries="@array/colors_array"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerBand3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerBand" />
+
+    <Spinner
+        android:id="@+id/spinnerBand3"
+        android:layout_width="170dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="116dp"
+        android:entries="@array/colors_array"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerBand4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerBand2" />
+
+    <Spinner
+        android:id="@+id/spinnerBand4"
+        android:layout_width="170dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="116dp"
+        android:entries="@array/colors_array"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerBand3" />
+
+    <Button
+        android:id="@+id/btnCalculate"
+        android:layout_width="171dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="24dp"
+        android:text="Calculate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="171dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="52dp"
+        android:text="Reset"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="292dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:text=""
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCalculate" />
+
+    <TextView
+        android:id="@+id/txtBand4"
+        android:layout_width="85dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center"
+        android:text="Tolerance"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerBand4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtBand3" />
+
+    <TextView
+        android:id="@+id/txtBand2"
+        android:layout_width="75dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center"
+        android:text="Band 2"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtBand3"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerBand2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtBand1" />
+
+    <TextView
+        android:id="@+id/txtBand3"
+        android:layout_width="75dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center"
+        android:text="Band 3"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtBand4"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerBand3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtBand2" />
+
+    <TextView
+        android:id="@+id/txtBand1"
+        android:layout_width="75dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center"
+        android:text="Band 1"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtBand2"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerBand"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAppName" />
+
+    <TextView
+        android:id="@+id/txtAppName"
+        android:layout_width="292dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Resistor Calculator App"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="377dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
