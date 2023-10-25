@@ -6,12 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- First band color spinner -->
-    <!-- Second band color spinner -->
-    <!-- Third band color spinner -->
-    <!-- Calculate button -->
-
-
     <Spinner
         android:id="@+id/spinnerBand"
         android:layout_width="170dp"
