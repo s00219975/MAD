@@ -9,6 +9,10 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     Spinner spinnerBand1, spinnerBand2, spinnerBand3, spinnerBand4;
@@ -66,116 +70,35 @@ public class MainActivity extends AppCompatActivity {
     private void calculateResistance() {
 
         float resistanceValue = 0;
-        float multiplier = 0;
+        StringBuilder multiplier = new StringBuilder("1");
         String tolerance = "";
 
-        
+        List<String> colors = new ArrayList<String>() {{
+            add("Black");
+            add("Brown");
+            add("Red");
+            add("Orange");
+            add("Yellow");
+            add("Green");
+            add("Blue");
+            add("Violet");
+            add("Gray");
+            add("White");
+            add("Gold");
+            add("Silver");
+        }};
 
-        switch (spinnerBand1.getSelectedItem().toString()) {
-            case "Black":
-                resistanceValue = 0;
-                break;
-            case "Brown":
-                resistanceValue = 1;
-                break;
-            case "Red":
-                resistanceValue = 2;
-                break;
-            case "Orange":
-                resistanceValue = 3;
-                break;
-            case "Yellow":
-                resistanceValue = 4;
-                break;
-            case "Green":
-                resistanceValue = 5;
-                break;
-            case "Blue":
-                resistanceValue = 6;
-                break;
-            case "Violet":
-                resistanceValue = 7;
-                break;
-            case "Gray":
-                resistanceValue = 8;
-                break;
-            case "White":
-                resistanceValue = 9;
-                break;
+        HashMap<String, Integer> basicColours = new HashMap<>();
+
+        for (int i = 0; i < colors.size(); i++) {
+            basicColours.put(colors.get(i), i);
         }
 
-        resistanceValue *= 10;
+        resistanceValue = basicColours.get(spinnerBand1.getSelectedItem().toString()) * 10;
+        resistanceValue += basicColours.get(spinnerBand2.getSelectedItem().toString());
 
-        switch (spinnerBand2.getSelectedItem().toString()) {
-            case "Black":
-                resistanceValue += 0;
-                break;
-            case "Brown":
-                resistanceValue += 1;
-                break;
-            case "Red":
-                resistanceValue += 2;
-                break;
-            case "Orange":
-                resistanceValue += 3;
-                break;
-            case "Yellow":
-                resistanceValue += 4;
-                break;
-            case "Green":
-                resistanceValue += 5;
-                break;
-            case "Blue":
-                resistanceValue += 6;
-                break;
-            case "Violet":
-                resistanceValue += 7;
-                break;
-            case "Gray":
-                resistanceValue += 8;
-                break;
-            case "White":
-                resistanceValue += 9;
-                break;
-        }
-
-        switch (spinnerBand3.getSelectedItem().toString()) {
-            case "Black":
-                multiplier = 1;
-                break;
-            case "Brown":
-                multiplier = 10;
-                break;
-            case "Red":
-                multiplier = 100;
-                break;
-            case "Orange":
-                multiplier = 1000;
-                break;
-            case "Yellow":
-                multiplier = 10000;
-                break;
-            case "Green":
-                multiplier = 100000;
-                break;
-            case "Blue":
-                multiplier = 1000000;
-                break;
-            case "Violet":
-                multiplier = 10000000;
-                break;
-            case "Gray":
-                multiplier = 100000000;
-                break;
-            case "White":
-                multiplier = 1000000000;
-                break;
-            case "Gold":
-                multiplier = 0.1f;
-                break;
-            case "Silver":
-                multiplier = 0.01f;
-                break;
+        for (int i = 0; i < basicColours.get(spinnerBand3.getSelectedItem().toString()); i++) {
+            multiplier.append("0");
         }
 
         switch (spinnerBand4.getSelectedItem().toString()) {
@@ -215,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Calculate resistance
-        float resistanceOhms = resistanceValue * multiplier;
+        float resistanceOhms = resistanceValue * Integer.parseInt(String.valueOf(multiplier));
         String result = String.format("%.0f Ω %s", resistanceOhms, tolerance);
 
         tvResult.setText(result);
