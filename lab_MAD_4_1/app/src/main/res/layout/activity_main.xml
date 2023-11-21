@@ -113,7 +113,7 @@
         android:layout_height="32dp"
         android:layout_marginStart="16dp"
         android:gravity="center"
-        android:text="Band 3"
+        android:text="Multiplier"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/txtBand4"
         app:layout_constraintEnd_toStartOf="@+id/spinnerBand3"
