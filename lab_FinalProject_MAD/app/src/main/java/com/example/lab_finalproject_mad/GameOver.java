@@ -3,6 +3,7 @@ package com.example.lab_finalproject_mad;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cursoradapter.widget.SimpleCursorAdapter;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ public class GameOver extends AppCompatActivity {
     private HighScoreDataSource dataSource;
     private SimpleCursorAdapter adapter;
     private ListView listViewScores;
+    private Button btnPlayAgain;
 
     int yourScore;
 
@@ -32,7 +34,7 @@ public class GameOver extends AppCompatActivity {
         tvCurrentScore = findViewById(R.id.tvCurrentScore);
         editTextName = findViewById(R.id.editTextName);
         listViewScores = findViewById(R.id.listViewScores);
-
+        btnPlayAgain = findViewById(R.id.btnPlayAgain);
         yourScore = getIntent().getIntExtra("score", 0);
         tvCurrentScore.setText("Your Score: " + yourScore);
 
@@ -52,6 +54,15 @@ public class GameOver extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveData();
+            }
+        });
+
+        btnPlayAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Open the second activity when the button is clicked
+                Intent intent = new Intent(GameOver.this, StartActivity.class);
+                startActivity(intent);
             }
         });
     }
