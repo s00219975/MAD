@@ -43,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
         // Update the TextView with the new score
         tvScore.setText("Score: " + score);
 
+        // Retrieve roundNumber from the Intent
+        roundNumber = getIntent().getIntExtra("roundNumber", 0);
+        int roundActual = roundNumber + 1;
+        Toast.makeText(MainActivity.this, "Ready? Round " + roundActual, Toast.LENGTH_SHORT).show();
+
         // Use CountDownTimer to introduce a delay
         new CountDownTimer(3000, 1000) {
 
@@ -73,11 +78,6 @@ public class MainActivity extends AppCompatActivity {
                 handler = new Handler();
                 sequenceIndex = 0;
                 isBlinking = false;
-
-                // Retrieve roundNumber from the Intent
-                roundNumber = getIntent().getIntExtra("roundNumber", 0);
-                int roundActual = roundNumber + 1;
-                Toast.makeText(MainActivity.this, "Ready? Round " + roundActual, Toast.LENGTH_SHORT).show();
 
                 blinkSequence();
             }

@@ -95,7 +95,7 @@
         android:id="@+id/buttonPlay"
         android:layout_width="116dp"
         android:layout_height="57dp"
-        android:text="@string/play"
+        android:text="Guess"
         android:backgroundTint="@color/purple_200"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

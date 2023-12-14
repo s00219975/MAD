@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,12 +23,6 @@ public class GameActivity extends AppCompatActivity {
     Button btnRed, btnBlue, btnGreen, btnYellow;
 
     int roundNumber, score;
-
-    private SensorManager sensorManager;
-    private Sensor accelerometer;
-    private float[] gravity;
-    private float[] linearAcceleration;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
