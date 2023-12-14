@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -15,15 +17,19 @@ import java.util.List;
 
 public class GameActivity extends AppCompatActivity {
 
-    private List<Button> sequenceButtons;
     private List<Button> userSequence;
-
     private ArrayList<String> buttonTexts;
 
+    private TextView tvScore;
     private List<Button> allButtons;
     Button btnRed, btnBlue, btnGreen, btnYellow;
 
-    int roundNumber;
+    int roundNumber, score;
+
+    private SensorManager sensorManager;
+    private Sensor accelerometer;
+    private float[] gravity;
+    private float[] linearAcceleration;
 
 
     @Override
@@ -32,6 +38,8 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        tvScore = findViewById(R.id.tvScore);
 
         btnRed = findViewById(R.id.buttonRed);
         btnBlue = findViewById(R.id.buttonBlue);
@@ -46,8 +54,13 @@ public class GameActivity extends AppCompatActivity {
 
         userSequence = new ArrayList<>();
 
+
         // Retrieve button texts from the intent
         buttonTexts = getIntent().getStringArrayListExtra("buttonTexts");
+        roundNumber = getIntent().getIntExtra("roundNumber", 0);
+        score = getIntent().getIntExtra("score", 0);
+
+        tvScore.setText("Score: " + score);
 
         // Ensure buttonTexts is not null before proceeding
         if (buttonTexts == null || buttonTexts.isEmpty()) {
@@ -55,7 +68,6 @@ public class GameActivity extends AppCompatActivity {
         }
         else {
             // Call setUserInteraction() after the sequenceButtons is retrieved
-            roundNumber = ;
             setUserInteraction();
         }
     }
@@ -93,13 +105,18 @@ public class GameActivity extends AppCompatActivity {
             // Correct sequence
             Toast.makeText(this, "Correct sequence!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, MainActivity.class);
-
+            roundNumber++;
+            score += 4;
             intent.putExtra("roundNumber", roundNumber);
+            intent.putExtra("score", score);
             startActivity(intent);
         } else {
             // Incorrect sequence
             Toast.makeText(this, "Incorrect sequence! Game Over", Toast.LENGTH_SHORT).show();
-            // Handle game over, reset or perform other actions as needed
+            Intent intent = new Intent(this, GameOver.class);
+            intent.putExtra("score", score);
+            startActivity(intent);
+
         }
     }
 }

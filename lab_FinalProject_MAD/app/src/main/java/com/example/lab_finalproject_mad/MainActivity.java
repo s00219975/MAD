@@ -9,23 +9,26 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
     private List<Button> allButtons;
     private List<Button> sequenceButtons;
     private Button currentButton;
+    private TextView tvScore;
     Button btnRed, btnBlue, btnGreen, btnYellow, btnPlay;
     private Handler handler;
     private int sequenceIndex;
     private boolean isBlinking;
 
-    int roundNumber;
+    int roundNumber = 0, score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        Toast.makeText(this, "Ready?", Toast.LENGTH_SHORT).show();
+
+        tvScore = findViewById(R.id.tvScore);
+
+        score = getIntent().getIntExtra("score", 0);
+        // Update the TextView with the new score
+        tvScore.setText("Score: " + score);
 
         // Use CountDownTimer to introduce a delay
         new CountDownTimer(3000, 1000) {
@@ -66,19 +74,33 @@ public class MainActivity extends AppCompatActivity {
                 sequenceIndex = 0;
                 isBlinking = false;
 
+                // Retrieve roundNumber from the Intent
+                roundNumber = getIntent().getIntExtra("roundNumber", 0);
+                int roundActual = roundNumber + 1;
+                Toast.makeText(MainActivity.this, "Ready? Round " + roundActual, Toast.LENGTH_SHORT).show();
+
                 blinkSequence();
             }
         }.start();
+
+
     }
 
     private void blinkSequence() {
         int sequenceLength = 4 + (roundNumber * 2);
 
         Collections.shuffle(allButtons); // Randomize button order
+
+        while (allButtons.size() < sequenceLength) {
+            int randomIndex = new Random().nextInt(allButtons.size());
+            Button randomButton = allButtons.get(randomIndex);
+            allButtons.add(randomButton);
+        }
+
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (sequenceIndex < allButtons.size()) {
+                if (sequenceIndex < sequenceLength) {
                     Button button = allButtons.get(sequenceIndex);
                     button.setAlpha(0.5f);
                     handler.postDelayed(new Runnable() {
@@ -92,9 +114,14 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }, 500); // Blink duration, adjust as needed
                 } else {
-                    // User interaction phase after the sequence blinks
-                    startGameActivity();
-
+                    // Set an OnClickListener for the startGameButton
+                    btnPlay.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // Call the function to initiate the blinking sequence and start GameActivity
+                            startGameActivity();
+                        }
+                    });
                 }
             }
         }, 500); // Delay before starting the sequence, adjust as needed
@@ -108,7 +135,8 @@ public class MainActivity extends AppCompatActivity {
         for (Button button : sequenceButtons) {
             buttonTexts.add(button.getText().toString());
         }
-
+        intent.putExtra("roundNumber", roundNumber);
+        intent.putExtra("score", score);
         intent.putStringArrayListExtra("buttonTexts", buttonTexts);
         startActivity(intent);
     }
